@@ -1,4 +1,20 @@
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-</script>
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <meta type="user" user="ndufreche">
+    <script>
+        var socket = io();
+        socket.emit('subscribe', {
+            path: document.location.pathname,
+            user: document.querySelector('meta[type="user"]').getAttribute('user')
+        });
+        socket.on('connecting', function (values) {
+            console.log('Incoming new player');
+            console.log(values);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
